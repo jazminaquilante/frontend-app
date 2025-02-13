@@ -1,0 +1,16 @@
+.right{
+  display: flex;
+  justify-content: right; 
+}
+.red-color {
+  color: red;
+}
+.green-color{
+  color:darkgreen;
+}
+.purple-color{
+  color: blueviolet;
+}
+.blue-color{
+  color:rgb(121, 109, 7)
+}

@@ -1,0 +1,146 @@
+<nav class="navbar navbar-expand-lg " style="background-color: rgb(121, 109, 7)" >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="font-family:Georgia, 'Times New Roman', Times, serif ; font-size: xx-large; color: aliceblue;">
+        Suscripción
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="tipo" style="font-family:Georgia, 'Times New Roman', Times, serif ; font-size: x-large; color:aliceblue;">
+              Planes
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<nav class="navbar" style="background-color: #e4dbc1">
+  <div class="container">
+    <h1 class="blue-color" style="font-family:Georgia, 'Times New Roman', Times, serif ;"><u>Iniciar Sesión</u></h1>
+  </div>
+</nav>
+
+<div style="background-color: #e4dbc1;">
+  <div *ngIf="cargando" class="text-center mt-3">
+    <p class="blue-color" style="font-family:Georgia, 'Times New Roman', Times, serif ;">Iniciando sesión...</p>
+  </div>
+  <div class="container">
+    <form [formGroup]="formularioUsuario" (ngSubmit)="enviar()">
+      
+      <div class="mb-3">
+        <label for="name" class="form-label" style="font-family:Georgia, 'Times New Roman', Times, serif ;">Nombre</label>
+        <input [ngClass]="{'is-invalid' : hasErrors('nombre', 'required') || hasErrors('nombre', 'minlength')}"
+          type="text" class="form-control" id="name" formControlName="nombre">
+        <div class="text-danger" *ngIf="hasErrors('nombre', 'required')"
+          style="font-family:Georgia, 'Times New Roman', Times, serif ;"> Se requiere el nombre. </div>
+        <div class="text-danger" *ngIf="hasErrors('nombre', 'minlength')"
+          style="font-family:Georgia, 'Times New Roman', Times, serif ;"> Nombre requiere al menos 3 caracteres. </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="name" class="form-label"
+          style="font-family:Georgia, 'Times New Roman', Times, serif ;">Apellido</label>
+        <input [ngClass]="{'is-invalid': hasErrors('apellido', 'required')|| hasErrors('apellido', 'minlength')}"
+          type="text" class="form-control" id="name" formControlName="apellido">
+        <div class="text-danger" *ngIf="hasErrors('apellido', 'required')"
+          style="font-family:Georgia, 'Times New Roman', Times, serif ;"> Se requiere el apellido. </div>
+        <div class="text-danger" *ngIf="hasErrors('apellido', 'minlength')"
+          style="font-family:Georgia, 'Times New Roman', Times, serif ;"> Apellido requiere al menos 3 caracteres.
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="tipoSuscrip" class="form-label" style="font-family:Georgia, 'Times New Roman', Times, serif ;">Tipo
+          Suscripción</label>
+        <select class="form-select" id="tipoSuscrip" formControlName="tipoSuscrip">
+          <option value="Individual" style="font-family:Georgia, 'Times New Roman', Times, serif ;">Individual</option>
+          <option value="Duo" style="font-family:Georgia, 'Times New Roman', Times, serif ;">Dúo</option>
+          <option value="Familiar" style="font-family:Georgia, 'Times New Roman', Times, serif ;">Familiar</option>
+        </select>
+      </div>
+  
+      <div class="mb-3" *ngIf="detalleSuscripcion">
+        <h5 style="font-family:Georgia, 'Times New Roman', Times, serif ;">Detalles de la Suscripción</h5>
+        <p>{{ detalleSuscripcion }}</p>
+      </div>
+  
+  
+      <div class="mb-3" *ngIf="mostrarSuscrip">
+        <app-tipo [tipoSuscripcion]="tipoSuscripcion" />
+      </div>
+  
+      <div class="mb-3">
+        <label for="email" class="form-label" style="font-family:Georgia, 'Times New Roman', Times, serif ;">Email</label>
+        <input [ngClass]="{'is-invalid':hasErrors('email', 'required') || hasErrors('email', 'email')}" type="email"
+          class="form-control" id="email" formControlName="email">
+        <div class="text-danger" *ngIf="hasErrors('email', 'email')"
+          style="font-family:Georgia, 'Times New Roman', Times, serif ;"> Mail inválido. </div>
+        <div class="text-danger" *ngIf="hasErrors('email', 'required')"
+          style="font-family:Georgia, 'Times New Roman', Times, serif ;"> Se requiere el mail. </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="name" class="form-label"
+          style="font-family:Georgia, 'Times New Roman', Times, serif ;">Contraseña</label>
+        <input [ngClass]="{'is-invalid':hasErrors('password', 'required') || hasErrors('password', 'minlength')}"
+          class="form-control" id="name" formControlName="password">
+        <div class="text-danger" *ngIf="hasErrors('password', 'minlength')"
+          style="font-family:Georgia, 'Times New Roman', Times, serif ;"> Contraseña inválida. </div>
+        <div class="text-danger" *ngIf="hasErrors('password', 'required')"
+          style="font-family:Georgia, 'Times New Roman', Times, serif ;"> Se requiere la contraseña. </div>
+      </div>
+  
+      <button type="button" class="btn btn-light" (click)="enviar()"
+        style="font-family:Georgia, 'Times New Roman', Times, serif ;">Enviar</button>
+      <br>
+      <br>
+    </form>
+  
+    <!-- Detalles de la Suscripción -->
+    <div class="row row-cols-1 row-cols-md-3 g-4" style="font-family:Georgia, 'Times New Roman', Times, serif ;">
+      <div class="col">
+        <div class="card h-100 bg-light mb-3" style="max-width: 22rem;">
+          <div class="card-body">
+            <h3 class="card-title green-color">Plan Individual</h3>
+            <p class="card-text">Esta suscripción es para uso personal. Se permite el acceso a un usuario y hasta dos
+              dispositivos.
+              Cancela cuando quieras.</p>
+            <h5 class="card-text">Precio final por mes: </h5>
+            <h4 class="right">**1499 ARS</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 bg-light mb-3" style="max-width: 22rem;">
+          <div class="card-body">
+            <h3 class="card-title purple-color">Plan Dúo</h3>
+            <p class="card-text">Esta suscripción incluye acceso para hasta dos miembros. Se permiten hasta cuatro
+              dispositivos.
+              Cancela cuando quieras.</p>
+            <h5 class="card-text">Precio final por mes: </h5>
+            <h4 class="right">**2299 ARS</h4>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 bg-light mb-3" style="max-width: 22rem;">
+          <div class="card-body">
+            <h3 class="card-title red-color">Plan Familiar</h3>
+            <p class="card-text">Esta suscripción incluye acceso para hasta cuatro miembros. No se restringe la cantidad
+              de dispositivos.
+              Cancela cuando quieras.</p>
+            <h5 class="card-text">Precio final por mes: </h5>
+            <h4 class="right">**3199 ARS</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+

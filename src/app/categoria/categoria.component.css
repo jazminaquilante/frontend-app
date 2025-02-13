@@ -1,0 +1,70 @@
+.img-ciencia {
+  background-image: url('ciencia.png');
+  background-size:cover; 
+  background-position: center; 
+  width: 544px; 
+  height: 250px; 
+}
+.img-espectaculo {
+  background-image: url('espectaculos.jpg');
+  background-size:cover; 
+  background-position: center; 
+  width: 544px; 
+  height: 250px; 
+}
+.img-economia {
+  background-image: url('economia.jpg');
+  background-size:cover; 
+  background-position: center; 
+  width: 544px; 
+  height: 250px; 
+}
+.img-cultura {
+  background-image: url('cultura.jpg');
+  background-size:cover; 
+  background-position: center; 
+  width: 544px; 
+  height: 250px; 
+}
+.img-deporte {
+  background-image: url('deportes.png');
+  background-size:cover; 
+  background-position: center; 
+  width: 544px; 
+  height: 250px; 
+}
+.img-politica {
+  background-image: url('politicas.jpg');
+  background-size:cover; 
+  background-position: center; 
+  width: 544px; 
+  height: 250px; 
+}
+.img-Sociedad {
+  background-image: url('social.jpg');
+  background-size:cover; 
+  background-position: center; 
+  width: 544px; 
+  height: 250px; 
+}
+.img-policial {
+  background-image: url('policial.jpg');
+  background-size:cover; 
+  background-position: center; 
+  width: 544px; 
+  height: 250px; 
+}
+.img-clima {
+  background-image: url('clima.jpg');
+  background-size:cover; 
+  background-position: center; 
+  width: 544px; 
+  height: 250px; 
+}
+
+.card-img-top {
+  background-position: center;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 2px solid #ddd;
+}

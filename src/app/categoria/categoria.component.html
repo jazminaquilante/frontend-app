@@ -1,0 +1,40 @@
+
+<nav class="navbar navbar-expand-lg" style="background-color: rgb(52, 109, 119);">
+  <div class="container-fluid">
+    <a class="navbar-brand" style="font-size: xx-large; color: aliceblue; font-family: Georgia, 'Times New Roman', Times, serif;" >Categorías de Noticias</a>
+    <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: large;color: aliceblue; font-family: Georgia, 'Times New Roman', Times, serif;">
+            Área geográfica de la noticia
+          </button>
+          <ul class="dropdown-menu dropdown-menu" style="background-color: rgb(153, 191, 224);">
+            <li><a class="dropdown-item" href="#" style="font-size: small;color: rgb(11, 42, 70);">Locales</a></li>
+            <li><a class="dropdown-item" href="#" style="font-size: small;color: rgb(11, 42, 70);">Nacionales</a></li>
+            <li><a class="dropdown-item" href="#" style="font-size: small;color:rgb(11, 42, 70);">Internacionales</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div style="background-color: rgb(187, 213, 238);">
+  <br>
+  <div class="container" >
+    <h2 style="font-family:Georgia, 'Times New Roman', Times, serif ;">Seleccione una categoría</h2>
+    <div class="row">
+      <div class="col-sm-4 mb-3" *ngFor="let categoria of categorias">
+        <div class="card">
+          <img [src]="categoria.imagen" class="card-img-top" alt="{{ categoria.nombre }}">
+          <div class="card-body">
+            <h3 class="card-title" style="font-family:Georgia, 'Times New Roman', Times, serif ;">{{ categoria.nombre }}</h3>
+            <button class="btn btn-light" style="background-color: rgb(52, 109, 119) ; color: aliceblue; font-family: Georgia, 'Times New Roman', Times, serif;"
+              [routerLink]="['/editorial', categoria.nombre]">Leer más...</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
